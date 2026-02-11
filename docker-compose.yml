@@ -25,6 +25,9 @@ services:
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
     ports:
       - "5111:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+      - ./servers.json:/pgadmin4/servers.json
     networks:
       - db-network
     depends_on:
@@ -32,6 +35,7 @@ services:
 
 volumes:
   pgdata:
+  pgadmin-data:
 
 networks:
   db-network:
